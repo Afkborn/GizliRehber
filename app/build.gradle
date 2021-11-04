@@ -1,17 +1,19 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android-extensions'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.bilgehankalay.gizlirehber"
-        minSdk 23
-        targetSdk 31
+        minSdkVersion 25
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -34,12 +36,12 @@ android {
     buildFeatures{
         viewBinding true
     }
-
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.30"
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
@@ -47,9 +49,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'org.greenrobot:eventbus:3.2.0'
     implementation "androidx.room:room-runtime:2.3.0"
     kapt "androidx.room:room-compiler:2.3.0"
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
 }

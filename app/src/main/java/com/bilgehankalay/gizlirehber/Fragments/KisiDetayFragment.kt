@@ -1,4 +1,4 @@
-package com.bilgehankalay.gizlirehber.Fragment
+package com.bilgehankalay.gizlirehber.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -62,7 +62,7 @@ class KisiDetayFragment : Fragment() {
 
     fun kisiGuncelle(guncellenecekKisi : KisiModel){
         kisiDb.kisiDAO().kisiGuncelle(guncellenecekKisi)
-        Toast.makeText(requireContext(),"Kişi başarıyla güncellendi",Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(),"Kişi başarıyla güncellendi", Toast.LENGTH_LONG).show()
         findNavController().navigate(R.id.kisiDetay_to_anasayfa)
     }
 

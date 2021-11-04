@@ -1,4 +1,4 @@
-package com.bilgehankalay.gizlirehber.Fragment
+package com.bilgehankalay.gizlirehber.Fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +13,12 @@ import com.bilgehankalay.gizlirehber.Adapter.RehberRecyclerAdapter
 import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 import com.bilgehankalay.gizlirehber.R
-import com.bilgehankalay.gizlirehber.databinding.FragmentAnasayfaBinding
-import com.bilgehankalay.gizlirehber.databinding.RehberCardTasarimBinding
+import com.bilgehankalay.gizlirehber.commons.CONSTANT_KISILER_LIST
+import com.bilgehankalay.gizlirehber.databinding.FragmentAnaSayfaBinding
 
 
-class AnasayfaFragment : Fragment() {
-    private lateinit var binding : FragmentAnasayfaBinding
+class AnaSayfaFragment : Fragment() {
+    private lateinit var binding : FragmentAnaSayfaBinding
     private lateinit var kisilerDb : KisilerDatabase
     private lateinit var kisilerList : List<KisiModel?>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,15 +26,17 @@ class AnasayfaFragment : Fragment() {
 
         kisilerDb = KisilerDatabase.getirKisilerDatabase(requireContext())!!
         kisilerList = kisilerDb.kisiDAO().tumKisiler()
+        CONSTANT_KISILER_LIST = kisilerDb.kisiDAO().tumKisiler()
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAnasayfaBinding.inflate(inflater,container,false)
+        binding = FragmentAnaSayfaBinding.inflate(inflater,container,false)
+        // Inflate the layout for this fragment
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,18 +50,20 @@ class AnasayfaFragment : Fragment() {
             }
         }
     }
-
     fun tumKisileriGetir(){
+
         binding.apply {
+
             if (kisilerList.isEmpty()){
-                Toast.makeText(requireContext(),"Kimse eklenmemiş",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Kimse eklenmemiş", Toast.LENGTH_LONG).show()
             }
             else{
                 val kisilerAdapter = RehberRecyclerAdapter(kisiList = kisilerList)
                 kisilerAdapter.onDeleteClick = ::kisiDeleteClick
                 kisilerAdapter.onItemClick = ::secilenKisiOnClick
                 rehberRecyclerView.adapter = kisilerAdapter
-                rehberRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+                rehberRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
+                    LinearLayoutManager.VERTICAL,false)
                 rehberRecyclerView.setHasFixedSize(true)
             }
         }
@@ -71,11 +74,13 @@ class AnasayfaFragment : Fragment() {
         kisilerList = kisilerDb.kisiDAO().tumKisiler()
         tumKisileriGetir()
     }
-
     fun secilenKisiOnClick(gelenKisi : KisiModel){
-        val gecisAction = AnasayfaFragmentDirections.anasayfaToKisidetay(gelenKisi)
+        val gecisAction = AnaSayfaFragmentDirections.anasayfaToKisidetay(gelenKisi)
         findNavController().navigate(gecisAction)
 
     }
+
+
+
 
 }

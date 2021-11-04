@@ -1,4 +1,4 @@
-package com.bilgehankalay.gizlirehber.Fragment
+package com.bilgehankalay.gizlirehber.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.databinding.FragmentKisiEkleBinding
+
 
 class KisiEkleFragment : Fragment() {
     private lateinit var binding : FragmentKisiEkleBinding
