@@ -40,17 +40,19 @@ class KisiDetayFragment : Fragment() {
             kisiDetayAd.setText(kisi.ad)
             kisiDetaySoyad.setText(kisi.soyad)
             kisiDetayTelefonNumarasi.setText(kisi.telefonNumarasi)
-
+            kisiDetayAciklama.setText(kisi.aciklama)
             kisiDetayGuncelleButton.setOnClickListener {
                 val kisiAdInput = kisiDetayAd.text.toString()
                 val kisiSoyAdInput = kisiDetaySoyad.text.toString()
                 val kisiTelefonNumarasiInput = kisiDetayTelefonNumarasi.text.toString()
-
+                val kisiAciklamaInput = kisiDetayAciklama.text.toString()
                 val guncellenmisKisi = KisiModel(
                     id = kisi.id,
                     ad = kisiAdInput,
                     soyad = kisiSoyAdInput,
-                    telefonNumarasi = kisiTelefonNumarasiInput
+                    telefonNumarasi = kisiTelefonNumarasiInput,
+                    aciklama = kisiAciklamaInput
+
                 )
                 kisiGuncelle(guncellenmisKisi)
 

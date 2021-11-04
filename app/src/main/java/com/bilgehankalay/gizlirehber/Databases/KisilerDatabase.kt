@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.bilgehankalay.gizlirehber.DAO.KisiDAO
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 
-@Database(entities = [KisiModel::class],version = 1)
+@Database(entities = [KisiModel::class],version = 3)
 abstract class KisilerDatabase : RoomDatabase() {
     abstract  fun kisiDAO() : KisiDAO
 
@@ -20,10 +20,9 @@ abstract class KisilerDatabase : RoomDatabase() {
                     context,
                     KisilerDatabase::class.java,
                     "kisiler.db"
-                ).allowMainThreadQueries().build()
+                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
             }
             return INSTANCE
-
         }
     }
 

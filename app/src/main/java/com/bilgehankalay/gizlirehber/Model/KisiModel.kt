@@ -18,7 +18,10 @@ data class KisiModel(
     var soyad : String,
 
     @ColumnInfo(name="TelefonNumarasi")
-    var telefonNumarasi : String
+    var telefonNumarasi : String,
+
+    @ColumnInfo(name = "Aciklama")
+    var aciklama : String?
 
 
 

@@ -8,6 +8,21 @@
     tools:context=".Fragment.KisiDetayFragment">
 
     <EditText
+        android:id="@+id/kisiDetay_aciklama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Aciklama"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_telefon_numarasi" />
+
+    <EditText
         android:id="@+id/kisiDetay_telefon_numarasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,10 +71,10 @@
         android:id="@+id/kisiDetay_guncelle_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Güncelle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_telefon_numarasi" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_aciklama" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

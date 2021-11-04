@@ -36,8 +36,10 @@ class KisiEkleFragment : Fragment() {
                 val kisiAdInput = kisiEkleAdText.text.toString()
                 val kisiSoyadInput = kisiEkleSoyadText.text.toString()
                 val kisiTelNoInput = kisiEkleTelNoText.text.toString()
+                //TODO kisiTelNoInput kontrol et
+                val kisiAciklamaInput = kisiEkleAciklama.text.toString()
                 kisilerDb.kisiDAO().kisiEkle(
-                    KisiModel(ad = kisiAdInput,soyad = kisiSoyadInput,telefonNumarasi = kisiTelNoInput)
+                    KisiModel(ad = kisiAdInput,soyad = kisiSoyadInput,telefonNumarasi = kisiTelNoInput, aciklama = kisiAciklamaInput)
                 )
                 findNavController().navigate(R.id.kisiEkle_to_anasayfa)
 
