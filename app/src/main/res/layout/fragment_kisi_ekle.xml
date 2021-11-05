@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
@@ -11,8 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Açıklama"
+        android:hint="@string/aciklama"
+        android:hintTextColor="#757575"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -27,13 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:hint="Ad"
+        android:hint="@string/ad"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/kisiEkle_soyad_text"
@@ -41,13 +45,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Soyad"
+        android:hint="@string/soyad"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_ad_text" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_ad_text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/kisiEkle_tel_no_text"
@@ -55,22 +60,37 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Telefon Numarası"
-        android:inputType="textPersonName"
+        android:hint="@string/telNoInput"
+        android:inputType="phone"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/kisiEkle_ekle_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Ekle"
+        android:layout_marginTop="32dp"
+        android:text="@string/ekle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_aciklama" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_yapilacakIslem_spinner" />
+
+    <Spinner
+        android:id="@+id/kisiEkle_yapilacakIslem_spinner"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_aciklama"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,6 @@ import com.bilgehankalay.gizlirehber.Adapter.RehberRecyclerAdapter
 import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 import com.bilgehankalay.gizlirehber.R
-import com.bilgehankalay.gizlirehber.commons.CONSTANT_KISILER_LIST
 import com.bilgehankalay.gizlirehber.databinding.FragmentAnaSayfaBinding
 
 
@@ -26,7 +25,6 @@ class AnaSayfaFragment : Fragment() {
 
         kisilerDb = KisilerDatabase.getirKisilerDatabase(requireContext())!!
         kisilerList = kisilerDb.kisiDAO().tumKisiler()
-        CONSTANT_KISILER_LIST = kisilerDb.kisiDAO().tumKisiler()
 
     }
 
@@ -59,8 +57,11 @@ class AnaSayfaFragment : Fragment() {
             }
             else{
                 val kisilerAdapter = RehberRecyclerAdapter(kisiList = kisilerList)
-                kisilerAdapter.onDeleteClick = ::kisiDeleteClick
+
+                kisilerAdapter.onDeleteClick = ::kisiSilClick
                 kisilerAdapter.onItemClick = ::secilenKisiOnClick
+                kisilerAdapter.onCallClick = ::kisiAraClick
+
                 rehberRecyclerView.adapter = kisilerAdapter
                 rehberRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
                     LinearLayoutManager.VERTICAL,false)
@@ -69,14 +70,18 @@ class AnaSayfaFragment : Fragment() {
         }
     }
 
-    fun kisiDeleteClick(gelenKisi : KisiModel){
+    fun kisiSilClick(gelenKisi : KisiModel){
         kisilerDb.kisiDAO().kisiSil(gelenKisi)
         kisilerList = kisilerDb.kisiDAO().tumKisiler()
         tumKisileriGetir()
     }
+
     fun secilenKisiOnClick(gelenKisi : KisiModel){
         val gecisAction = AnaSayfaFragmentDirections.anasayfaToKisidetay(gelenKisi)
         findNavController().navigate(gecisAction)
+
+    }
+    fun kisiAraClick(gelenKisi:KisiModel){
 
     }
 

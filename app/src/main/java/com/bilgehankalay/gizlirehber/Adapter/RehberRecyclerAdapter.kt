@@ -9,6 +9,7 @@ import com.bilgehankalay.gizlirehber.databinding.RehberCardTasarimBinding
 class RehberRecyclerAdapter (private var kisiList: List<KisiModel?>) : RecyclerView.Adapter<RehberRecyclerAdapter.RehberCardTasarim>() {
     var onDeleteClick : (KisiModel) -> Unit = {}
     var onItemClick : (KisiModel) -> Unit = {}
+    var onCallClick : (KisiModel) -> Unit = {}
     class RehberCardTasarim(val rehberCardTasarimBinding: RehberCardTasarimBinding) : RecyclerView.ViewHolder(rehberCardTasarimBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RehberCardTasarim {
@@ -31,6 +32,10 @@ class RehberRecyclerAdapter (private var kisiList: List<KisiModel?>) : RecyclerV
 
                 kisiSilButton.setOnClickListener {
                     onDeleteClick(kisi)
+                }
+                kisiAraButton.setOnClickListener {
+                    onCallClick(kisi)
+
                 }
             }
 

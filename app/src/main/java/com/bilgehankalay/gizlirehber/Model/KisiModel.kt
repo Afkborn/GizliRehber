@@ -21,8 +21,10 @@ data class KisiModel(
     var telefonNumarasi : String,
 
     @ColumnInfo(name = "Aciklama")
-    var aciklama : String?
+    var aciklama : String?,
 
+    @ColumnInfo(name ="yapilacakIslem")
+    var yapilacakIslem : Int
 
 
 ) : Serializable

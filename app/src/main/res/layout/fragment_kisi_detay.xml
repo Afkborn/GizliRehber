@@ -6,13 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Spinner
+        android:id="@+id/kisiDetay_yapilacakIslem_spinner"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_aciklama"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <EditText
         android:id="@+id/kisiDetay_aciklama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Aciklama"
+        android:hint="@string/aciklama"
+        android:hintTextColor="#757575"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -27,14 +40,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Telefon Numarası"
+        android:hint="@string/telNoInput"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_soyad" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_soyad"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/kisiDetay_soyad"
@@ -42,14 +56,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Soyad"
+        android:hint="@string/soyad"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_ad" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_ad"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/kisiDetay_ad"
@@ -57,23 +72,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Ad"
+        android:hint="@string/ad"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/kisiDetay_guncelle_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Güncelle"
+        android:layout_marginTop="16dp"
+        android:text="@string/guncelle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_aciklama" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiDetay_yapilacakIslem_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

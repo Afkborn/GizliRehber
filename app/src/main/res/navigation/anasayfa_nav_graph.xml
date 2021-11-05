@@ -39,4 +39,9 @@
             android:name="kisi"
             app:argType="com.bilgehankalay.gizlirehber.Model.KisiModel" />
     </fragment>
+    <fragment
+        android:id="@+id/logFragment"
+        android:name="com.bilgehankalay.gizlirehber.Fragments.LogFragment"
+        android:label="fragment_log"
+        tools:layout="@layout/fragment_log" />
 </navigation>

@@ -1,7 +1,9 @@
 package com.bilgehankalay.gizlirehber.commons
 
+import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
-lateinit var CONSTANT_KISILER_LIST : List<KisiModel?>
+
+
 
 
 

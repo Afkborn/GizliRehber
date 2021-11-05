@@ -2,9 +2,25 @@
     <string name="app_name">Gizli Rehber</string>
 
 
-    <string name="global_enable_contact_phone_state_permissions">Please enable contact and read phone state permission</string>
-    <string name="global_message_title">Message</string>
-    <string name="global_call_screening_required_message">You have to select Call Screening app in the following dialog in order for app to work.</string>
+    <string name="global_enable_contact_phone_state_permissions">Lütfen kişiye erişim iznini aktif edin.</string>
+    <string name="global_message_title">Mesaj</string>
+    <string name="global_call_screening_required_message">Uygulamanın çalışması için aşağıdaki iletişim kutusunda Gizli Rehber uygulamasını seçmelisiniz..</string>
 
+    <string-array name="yapilacakIslemSecenek">
+        <item>Aramanın kimden olduğuna dair mesaj ver</item>
+        <item>Aramayı reddet</item>
+        <item>Aramayı gizle</item>
+    </string-array>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ana_sayfa">Ana Sayfa</string>
+    <string name="gecmis">Geçmiş</string>
+    <string name="ekle">Ekle</string>
+    <string name="soyad">Soyad</string>
+    <string name="aciklama">Açıklama</string>
+    <string name="ad">Ad</string>
+    <string name="telNoInput">(___) ___ __ __</string>
+    <string name="guncelle">Güncelle</string>
+    <string name="sil">Sil</string>
+    <string name="ara">Ara</string>
 </resources>

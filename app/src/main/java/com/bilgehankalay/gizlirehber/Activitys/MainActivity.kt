@@ -1,13 +1,19 @@
 package com.bilgehankalay.gizlirehber.Activitys
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.commons.base.BaseActivity
 import com.bilgehankalay.gizlirehber.commons.events.PermissionDenied
 import com.bilgehankalay.gizlirehber.commons.events.PhoneManifestPermissionsEnabled
 import com.bilgehankalay.gizlirehber.commons.utils.CapabilitiesRequestorImpl
 import com.bilgehankalay.gizlirehber.commons.utils.ManifestPermissionRequesterImpl
+import com.bilgehankalay.gizlirehber.databinding.ActivityMainBinding
 import pub.devrel.easypermissions.AppSettingsDialog
 import java.lang.ref.WeakReference
 
@@ -15,14 +21,21 @@ class MainActivity : BaseActivity() {
     private val manifestPermissionRequestor = ManifestPermissionRequesterImpl()
     private val capabilitiesRequestor = CapabilitiesRequestorImpl()
     private var checkCapabilitiesOnResume = false
+    private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        NavigationUI.setupWithNavController(binding.bottomNavigationView,navHostFragment.navController)
+
+
         listenUiEvents()
-        //
+
+
         manifestPermissionRequestor.activity = WeakReference(this)
         capabilitiesRequestor.activityReference = WeakReference(this)
-        //
         manifestPermissionRequestor.getPermissions()
     }
     override fun onResume() {
@@ -33,6 +46,10 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
+
+    }
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
