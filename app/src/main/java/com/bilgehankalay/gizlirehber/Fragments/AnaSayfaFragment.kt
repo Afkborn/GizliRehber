@@ -1,7 +1,7 @@
 package com.bilgehankalay.gizlirehber.Fragments
 
 import android.os.Bundle
-import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +16,8 @@ import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.databinding.FragmentAnaSayfaBinding
 import android.content.Intent
 import android.net.Uri
+import android.app.AlertDialog;
+import android.content.DialogInterface
 
 
 class AnaSayfaFragment : Fragment() {
@@ -73,9 +75,15 @@ class AnaSayfaFragment : Fragment() {
     }
 
     fun kisiSilClick(gelenKisi : KisiModel){
-        kisilerDb.kisiDAO().kisiSil(gelenKisi)
-        kisilerList = kisilerDb.kisiDAO().tumKisiler()
-        tumKisileriGetir()
+        val uyariMesaji = AlertDialog.Builder(requireContext())
+        uyariMesaji.setMessage("${gelenKisi.ad} ${gelenKisi.soyad}'ı silmek istediğinden emin misin?")
+        uyariMesaji.setPositiveButton("Evet", DialogInterface.OnClickListener { _, _ ->
+            kisilerDb.kisiDAO().kisiSil(gelenKisi)
+            kisilerList = kisilerDb.kisiDAO().tumKisiler()
+            tumKisileriGetir()
+        })
+        uyariMesaji.setNegativeButton("Hayır",null)
+        uyariMesaji.show()
     }
 
     fun secilenKisiOnClick(gelenKisi : KisiModel){
@@ -84,7 +92,6 @@ class AnaSayfaFragment : Fragment() {
 
     }
     fun kisiAraClick(gelenKisi:KisiModel){
-
         val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + gelenKisi.telefonNumarasi))
         startActivity(intent)
 
