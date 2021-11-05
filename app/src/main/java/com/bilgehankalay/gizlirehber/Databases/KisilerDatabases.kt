@@ -8,7 +8,7 @@ import com.bilgehankalay.gizlirehber.DAO.KisiDAO
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 
 
-@Database(entities = [KisiModel::class],version = 4)
+@Database(entities = [KisiModel::class],version = 7)
 abstract class KisilerDatabase : RoomDatabase() {
     abstract  fun kisiDAO() : KisiDAO
 

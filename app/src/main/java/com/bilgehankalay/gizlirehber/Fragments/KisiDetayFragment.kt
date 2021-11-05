@@ -49,15 +49,17 @@ class KisiDetayFragment : Fragment() {
 
             kisiDetayAd.setText(kisi.ad)
             kisiDetaySoyad.setText(kisi.soyad)
-            kisiDetayTelefonNumarasi.setText(kisi.telefonNumarasi)
+            kisiDetayTelNoText.setText(kisi.telefonNumarasi)
             kisiDetayAciklama.setText(kisi.aciklama)
             kisiDetayYapilacakIslemSpinner.setSelection(kisi.yapilacakIslem)
-
+            kisiDetayTelNoCcp.setCountryForNameCode(kisi.ulkeIsmi)
             kisiDetayGuncelleButton.setOnClickListener {
                 val kisiAdInput = kisiDetayAd.text.toString()
                 val kisiSoyAdInput = kisiDetaySoyad.text.toString()
-                val kisiTelefonNumarasiInput = kisiDetayTelefonNumarasi.text.toString()
+                val kisiTelefonNumarasiInput = kisiDetayTelNoText.text.toString()
+                val kisiTelCCPInput = kisiDetayTelNoCcp.selectedCountryCode
                 val kisiAciklamaInput = kisiDetayAciklama.text.toString()
+                val kisiTelCCPCountry = kisiDetayTelNoCcp.selectedCountryName
                 val kisiYapilacakIslemId = kisiDetayYapilacakIslemSpinner.selectedItemId.toInt()
                 val guncellenmisKisi = KisiModel(
                     id = kisi.id,
@@ -65,7 +67,10 @@ class KisiDetayFragment : Fragment() {
                     soyad = kisiSoyAdInput,
                     telefonNumarasi = kisiTelefonNumarasiInput,
                     aciklama = kisiAciklamaInput,
-                    yapilacakIslem = kisiYapilacakIslemId
+                    yapilacakIslem = kisiYapilacakIslemId,
+                    ulkeKodu = kisiTelCCPInput,
+                    fullTelefonNumarasi = "+$kisiTelCCPInput$kisiTelefonNumarasiInput",
+                    ulkeIsmi = kisiTelCCPCountry
 
                 )
                 kisiGuncelle(guncellenmisKisi)

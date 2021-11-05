@@ -52,8 +52,12 @@ class KisiEkleFragment : Fragment() {
             kisiEkleEkleButton.setOnClickListener {
                 val kisiAdInput = kisiEkleAdText.text.toString()
                 val kisiSoyadInput = kisiEkleSoyadText.text.toString()
-                val kisiTelNoInput = kisiEkleTelNoText.text.toString()
-                //TODO kisiTelNoInput kontrol et
+
+                val kisiTelCCPInput = kisiEkleTelNoCcp.selectedCountryCode
+                val kisiTelCCPCountry = kisiEkleTelNoCcp.selectedCountryNameCode
+                val kisiTelNoInput =  kisiEkleTelNoText.text.toString()
+
+
                 val kisiAciklamaInput = kisiEkleAciklama.text.toString()
                 val kisiYapilacakIslemId = kisiEkleYapilacakIslemSpinner.selectedItemId.toInt()
                 kisilerDb.kisiDAO().kisiEkle(
@@ -61,7 +65,11 @@ class KisiEkleFragment : Fragment() {
                         soyad = kisiSoyadInput,
                         telefonNumarasi = kisiTelNoInput,
                         aciklama = kisiAciklamaInput,
-                        yapilacakIslem = kisiYapilacakIslemId)
+                        yapilacakIslem = kisiYapilacakIslemId,
+                        ulkeKodu = kisiTelCCPInput,
+                        fullTelefonNumarasi = "+$kisiTelCCPInput$kisiTelNoInput",
+                        ulkeIsmi = kisiTelCCPCountry
+                    )
                 )
                 findNavController().navigate(R.id.kisiEkle_to_anasayfa)
             }

@@ -34,7 +34,7 @@ class RehberRecyclerAdapter (private var kisiList: List<KisiModel?>) : RecyclerV
             if (kisi!= null){
 
                 kisiAdTextView.text =  kisi.ad + " " + kisi.soyad//"${kisi.ad} ${kisi.soyad}"
-                kisiTelnoTextView.text = kisi.telefonNumarasi
+                kisiTelnoTextView.text =  "+" + kisi.ulkeKodu + " " + kisi.telefonNumarasi
 
                 kisiSilButton.setOnClickListener {
                     onDeleteClick(kisi)

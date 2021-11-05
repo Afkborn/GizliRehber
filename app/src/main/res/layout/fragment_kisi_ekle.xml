@@ -7,20 +7,6 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/kisiEkle_tel_no_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="@string/telNoInput"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text" />
-
-    <EditText
         android:id="@+id/kisiEkle_soyad_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/kisiEkle_ekle_button"
         android:layout_width="wrap_content"
@@ -69,9 +56,42 @@
         android:layout_marginTop="32dp"
         android:text="@string/ekle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kisiEkle_yapilacakIslem_spinner" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:weightSum="3"
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/kisiEkle_tel_no_ccp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showNameCode="true"
+            app:ccp_textSize="16sp" />
+
+        <EditText
+            android:id="@+id/kisiEkle_tel_no_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:maxLength="10"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:textSize="16sp"
+            android:minHeight="48dp" />
+
+    </LinearLayout>
 
     <Spinner
         android:id="@+id/kisiEkle_yapilacakIslem_spinner"
@@ -80,7 +100,9 @@
         android:layout_marginTop="32dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_tel_no_text" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

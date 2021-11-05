@@ -20,6 +20,9 @@ class MyCallScreeningService : CallScreeningService() {
 
     override fun onScreenCall(callDetails: Call.Details) {
         val phoneNumber = getPhoneNumber(callDetails)
+        // +905061529740
+        // 05061529740
+        // 5061529740
         var response = CallResponse.Builder()
         val arayanKisi = findCaller(phoneNumber)
 
@@ -43,11 +46,17 @@ class MyCallScreeningService : CallScreeningService() {
             callDirection : Int
     ): CallResponse.Builder {
         if (arayanKisi != null && callDirection == 0){
-                if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 0){
+            val telNoList : ArrayList<String> = ArrayList()
+            telNoList.add(arayanKisi.telefonNumarasi)
+            telNoList.add(arayanKisi.ulkeKodu + arayanKisi.telefonNumarasi)
+            telNoList.add("+"+ arayanKisi.ulkeKodu + arayanKisi.telefonNumarasi)
+            telNoList.add("0" + arayanKisi.telefonNumarasi)
+            for (telNo in telNoList){
+                if (phoneNumber == telNo && arayanKisi.yapilacakIslem == 0){
                     //bilgi ver
                     displayToast(getString(R.string.gelen_cagri_goster,arayanKisi.ad,arayanKisi.soyad))
                 }
-                else if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 1){
+                else if (phoneNumber == telNo && arayanKisi.yapilacakIslem == 1){
                     //aramayı reddet
                     response.apply {
                         setRejectCall(true)
@@ -56,7 +65,7 @@ class MyCallScreeningService : CallScreeningService() {
                     }
                     displayToast(getString(R.string.gelen_cagri_red,arayanKisi.ad,arayanKisi.soyad))
                 }
-                else if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 2){
+                else if (phoneNumber == telNo && arayanKisi.yapilacakIslem == 2){
                     // aramayi gizle
                     response.apply {
                         setRejectCall(false)
@@ -65,6 +74,8 @@ class MyCallScreeningService : CallScreeningService() {
                     }
                     displayToast(getString(R.string.gelen_cagri_gizle,arayanKisi.ad,arayanKisi.soyad))
                 }
+            }
+
         }
         return response
     }
@@ -79,8 +90,16 @@ class MyCallScreeningService : CallScreeningService() {
     }
 
     private fun findCaller(phoneNumber: String) : KisiModel? {
+        Log.e("LOG","gelen no: "+phoneNumber)
         kisilerDb = KisilerDatabase.getirKisilerDatabase(applicationContext)!!
-        val kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(phoneNumber)
+        var kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(phoneNumber)
+        if (kisi==null){
+            kisi = kisilerDb.kisiDAO().fullTelefonNoIleKisiGetir(phoneNumber)
+            if (kisi == null){
+                var deleteZero = phoneNumber
+                kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(deleteZero.drop(1))
+            }
+        }
         return kisi
     }
 }
