@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/kisiEkle_ad_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/ad"
@@ -32,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_aciklama" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/kisiEkle_aciklama"
@@ -44,10 +45,9 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/kisiEkle_ekle_button"
@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/ekle"
+        app:icon="@drawable/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,19 +63,20 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_marginTop="32dp"
+        android:orientation="horizontal"
         android:weightSum="3"
-        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_soyad_text">
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/kisiEkle_tel_no_ccp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:gravity="center"
             app:ccp_autoDetectCountry="true"
             app:ccp_showNameCode="true"
@@ -84,12 +86,12 @@
             android:id="@+id/kisiEkle_tel_no_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:maxLength="10"
+            android:layout_weight="1.7"
             android:hint="@string/phone_number"
             android:inputType="phone"
-            android:textSize="16sp"
-            android:minHeight="48dp" />
+            android:maxLength="10"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -100,9 +102,9 @@
         android:layout_marginTop="32dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/kisiEkle_aciklama" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
