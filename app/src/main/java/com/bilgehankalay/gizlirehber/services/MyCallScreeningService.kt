@@ -4,8 +4,7 @@ import android.telecom.Call
 import android.telecom.CallScreeningService
 import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
-import com.bilgehankalay.gizlirehber.commons.FORBIDDEN_PHONE_CALL_NUMBER
-import com.bilgehankalay.gizlirehber.commons.events.MessageEvent
+import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.commons.extensions.parseCountryCode
 import com.bilgehankalay.gizlirehber.commons.extensions.removeTelPrefix
 import com.bilgehankalay.gizlirehber.commons.utils.NotificationManagerImpl
@@ -35,7 +34,7 @@ class MyCallScreeningService : CallScreeningService() {
         for (kisi in kisilerList){
             if (kisi !=null){
                 if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 0){
-                    displayToast(String.format("Incoming call from ${kisi.ad} ${kisi.soyad}"))
+                    displayToast(getString(R.string.gelen_cagri_goster,kisi.ad,kisi.soyad))
                 }
                 else if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 1){
                     //aramayı reddet
@@ -43,7 +42,8 @@ class MyCallScreeningService : CallScreeningService() {
                         setRejectCall(true)
                         setDisallowCall(true)
                         setSkipCallLog(false)
-                        displayToast(String.format("Reddet -- Rejected call from ${kisi.ad} ${kisi.soyad}"))
+
+                        displayToast(getString(R.string.gelen_cagri_red,kisi.ad,kisi.soyad))
                     }
                 }
                 else if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 2){
@@ -52,7 +52,7 @@ class MyCallScreeningService : CallScreeningService() {
                         setRejectCall(false)
                         setDisallowCall(true)
                         setSkipCallLog(false)
-                        displayToast(String.format("Gosterme -- Rejected call from ${kisi.ad} ${kisi.soyad}"))
+                        displayToast(getString(R.string.gelen_cagri_gizle,kisi.ad,kisi.soyad))
                     }
                 }
             }
@@ -66,7 +66,7 @@ class MyCallScreeningService : CallScreeningService() {
 
     private fun displayToast(message: String) {
         notificationManager.showToastNotification(applicationContext, message)
-        EventBus.getDefault().post(MessageEvent(message))
+        EventBus.getDefault().post(message)
     }
 
 }

@@ -1,10 +1,15 @@
 package com.bilgehankalay.gizlirehber.Adapter
 
+
+import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bilgehankalay.gizlirehber.Model.KisiModel
+import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.databinding.RehberCardTasarimBinding
+
+
 
 class RehberRecyclerAdapter (private var kisiList: List<KisiModel?>) : RecyclerView.Adapter<RehberRecyclerAdapter.RehberCardTasarim>() {
     var onDeleteClick : (KisiModel) -> Unit = {}
@@ -27,7 +32,8 @@ class RehberRecyclerAdapter (private var kisiList: List<KisiModel?>) : RecyclerV
         }
         holder.rehberCardTasarimBinding.apply {
             if (kisi!= null){
-                kisiAdTextView.text = "${kisi.ad} ${kisi.soyad}"
+
+                kisiAdTextView.text =  kisi.ad + " " + kisi.soyad//"${kisi.ad} ${kisi.soyad}"
                 kisiTelnoTextView.text = kisi.telefonNumarasi
 
                 kisiSilButton.setOnClickListener {

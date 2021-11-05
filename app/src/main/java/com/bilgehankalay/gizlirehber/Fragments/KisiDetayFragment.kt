@@ -76,7 +76,7 @@ class KisiDetayFragment : Fragment() {
 
     fun kisiGuncelle(guncellenecekKisi : KisiModel){
         kisiDb.kisiDAO().kisiGuncelle(guncellenecekKisi)
-        Toast.makeText(requireContext(),"Kişi başarıyla güncellendi", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(),R.string.kisi_guncelleme_basarili, Toast.LENGTH_LONG).show()
         findNavController().navigate(R.id.kisiDetay_to_anasayfa)
     }
 

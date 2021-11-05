@@ -15,7 +15,6 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/aciklama"
-        android:hintTextColor="#757575"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"

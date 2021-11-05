@@ -1,11 +1,12 @@
 package com.bilgehankalay.gizlirehber.commons.extensions
 
 import android.net.Uri
-import com.bilgehankalay.gizlirehber.commons.TEL_PREFIX
 
 /**
  * Removes 'tel:' prefix from phone number string.
  */
+const val TEL_PREFIX = "tel:"
+
 fun String.removeTelPrefix() = this.replace(TEL_PREFIX, "")
 
 /**

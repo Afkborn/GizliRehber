@@ -11,8 +11,10 @@
         <item>Aramayı reddet</item>
         <item>Aramayı gizle</item>
     </string-array>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gelen_cagri_goster">%s %s\'den gelen çağrı.</string>
+    <string name="gelen_cagri_red">%s %s\'den gelen çağrı red edildi.</string>
+    <string name="gelen_cagri_gizle">%s %s\'den gelen çağrı gizlendi.</string>
+    <string name="kisi_guncelleme_basarili">Kişi başarıyla güncellendi</string>
     <string name="ana_sayfa">Ana Sayfa</string>
     <string name="gecmis">Geçmiş</string>
     <string name="ekle">Ekle</string>
