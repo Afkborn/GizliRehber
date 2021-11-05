@@ -17,4 +17,8 @@ interface KisiDAO {
     @Query("SELECT * from kisiler")
     fun tumKisiler() : List<KisiModel?>
 
+    @Query("SELECT * from kisiler WHERE TelefonNumarasi= :phoneNumber")
+    fun telefonNoIleKisiGetir(phoneNumber : String) : KisiModel?
+
+
 }

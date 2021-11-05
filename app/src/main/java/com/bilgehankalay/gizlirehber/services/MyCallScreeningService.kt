@@ -1,7 +1,9 @@
 package com.bilgehankalay.gizlirehber.services
 
+import android.os.Build
 import android.telecom.Call
 import android.telecom.CallScreeningService
+import android.util.Log
 import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 import com.bilgehankalay.gizlirehber.R
@@ -19,43 +21,50 @@ class MyCallScreeningService : CallScreeningService() {
     override fun onScreenCall(callDetails: Call.Details) {
         val phoneNumber = getPhoneNumber(callDetails)
         var response = CallResponse.Builder()
-        response = handlePhoneCall(response, phoneNumber)
+        val arayanKisi = findCaller(phoneNumber)
+
+
+        var callDirection = 0
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            callDirection = callDetails.callDirection
+        }
+        //0 INCOMING, 1 OUTGOING
+        //TODO arama geliyorsa yazılar çıksın, hata çöz
+
+        response = handlePhoneCall(response, phoneNumber,arayanKisi,callDirection)
 
         respondToCall(callDetails, response.build())
     }
 
     private fun handlePhoneCall(
             response: CallResponse.Builder,
-            phoneNumber: String
+            phoneNumber: String,
+            arayanKisi : KisiModel?,
+            callDirection : Int
     ): CallResponse.Builder {
-        kisilerDb = KisilerDatabase.getirKisilerDatabase(applicationContext)!!
-        kisilerList = kisilerDb.kisiDAO().tumKisiler()
-
-        for (kisi in kisilerList){
-            if (kisi !=null){
-                if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 0){
-                    displayToast(getString(R.string.gelen_cagri_goster,kisi.ad,kisi.soyad))
+        if (arayanKisi != null && callDirection == 0){
+                if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 0){
+                    //bilgi ver
+                    displayToast(getString(R.string.gelen_cagri_goster,arayanKisi.ad,arayanKisi.soyad))
                 }
-                else if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 1){
+                else if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 1){
                     //aramayı reddet
                     response.apply {
                         setRejectCall(true)
                         setDisallowCall(true)
                         setSkipCallLog(false)
-
-                        displayToast(getString(R.string.gelen_cagri_red,kisi.ad,kisi.soyad))
                     }
+                    displayToast(getString(R.string.gelen_cagri_red,arayanKisi.ad,arayanKisi.soyad))
                 }
-                else if (phoneNumber == kisi.telefonNumarasi && kisi.yapilacakIslem == 2){
+                else if (phoneNumber == arayanKisi.telefonNumarasi && arayanKisi.yapilacakIslem == 2){
                     // aramayi gizle
                     response.apply {
                         setRejectCall(false)
                         setDisallowCall(true)
                         setSkipCallLog(false)
-                        displayToast(getString(R.string.gelen_cagri_gizle,kisi.ad,kisi.soyad))
                     }
+                    displayToast(getString(R.string.gelen_cagri_gizle,arayanKisi.ad,arayanKisi.soyad))
                 }
-            }
         }
         return response
     }
@@ -69,4 +78,11 @@ class MyCallScreeningService : CallScreeningService() {
         EventBus.getDefault().post(message)
     }
 
+    private fun findCaller(phoneNumber: String) : KisiModel? {
+        kisilerDb = KisilerDatabase.getirKisilerDatabase(applicationContext)!!
+        val kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(phoneNumber)
+        return kisi
+    }
 }
+
+

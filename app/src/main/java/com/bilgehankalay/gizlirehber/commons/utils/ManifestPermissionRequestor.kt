@@ -35,6 +35,7 @@ class ManifestPermissionRequesterImpl : ManifestPermissionRequester,
     private val permissions =
             arrayOf(
                     Manifest.permission.READ_PHONE_STATE,
+                    Manifest.permission.CALL_PHONE
             )
 
 

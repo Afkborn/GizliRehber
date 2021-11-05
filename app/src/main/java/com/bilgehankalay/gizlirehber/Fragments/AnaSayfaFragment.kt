@@ -14,6 +14,8 @@ import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
 import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.databinding.FragmentAnaSayfaBinding
+import android.content.Intent
+import android.net.Uri
 
 
 class AnaSayfaFragment : Fragment() {
@@ -82,6 +84,9 @@ class AnaSayfaFragment : Fragment() {
 
     }
     fun kisiAraClick(gelenKisi:KisiModel){
+
+        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + gelenKisi.telefonNumarasi))
+        startActivity(intent)
 
     }
 
