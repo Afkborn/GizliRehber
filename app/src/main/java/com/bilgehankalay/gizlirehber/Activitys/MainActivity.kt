@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.bilgehankalay.gizlirehber.R
@@ -26,6 +27,12 @@ class MainActivity : BaseActivity() {
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (readThemeType()){
+            loadTheme(readDarkTheme())
+        }
+        else{
+            //TODO LOAD CUSTOM
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -54,10 +61,27 @@ class MainActivity : BaseActivity() {
             checkCapabilitiesOnResume = false
         }
     }
+    fun readThemeType() : Boolean{
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return true
+        return sharedPref.getBoolean("theme_type",true)
+    }
+    fun readDarkTheme() : Boolean{
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return true
+        return sharedPref.getBoolean("dark_theme",false)
+    }
+
+    private fun loadTheme(darkTheme : Boolean){
+        if (darkTheme){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
 
+        return super.onCreateView(name, context, attrs)
     }
     override fun onRequestPermissionsResult(
             requestCode: Int,

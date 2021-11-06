@@ -30,4 +30,9 @@
     <string name="whatsapp">Whatsapp</string>
     <string name="cep">Cep</string>
     <string name="install_Whatsapp_first">Please install whatsapp first!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ayarlar">Ayarlar</string>
+    <string name="varsayilan_tema">Varsayılan Tema</string>
+    <string name="ozel_tema">Özel Tema</string>
 </resources>
