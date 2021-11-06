@@ -13,18 +13,93 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/kisi_yer_tutucu_iki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="1dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_cep_ara_button" />
+
+        <Button
+            android:id="@+id/kisi_cep_sms_button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/cep"
+            android:textColor="#5D4037"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_wp_sms_button" />
+
+        <Button
+            android:id="@+id/kisi_wp_ara_button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/whatsapp"
+            android:textColor="#5D4037"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:cornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_ara_button" />
+
+        <Button
+            android:id="@+id/kisi_wp_sms_button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/whatsapp"
+            android:textColor="#5D4037"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_sms_button" />
+
+        <Button
+            android:id="@+id/kisi_cep_ara_button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/cep"
+            android:textColor="#5D4037"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:cornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_wp_ara_button" />
+
+        <Button
+            android:id="@+id/kisi_sms_button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/sms"
+            android:textColor="#5D4037"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/sms"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_ad_text_view" />
+
+        <TextView
             android:id="@+id/kisi_telno_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
             android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/kisi_ara_button"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Telefon Numarası" />
 
         <TextView
@@ -40,30 +115,28 @@
             tools:text="Ad Soyad" />
 
         <Button
-            android:id="@+id/kisi_sil_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/delete"
-            android:visibility="invisible"
-            app:iconPadding="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
             android:id="@+id/kisi_ara_button"
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/ara"
+            android:textColor="#5D4037"
             app:cornerRadius="15dp"
             app:icon="@drawable/call"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kisi_ad_text_view" />
+
+        <TextView
+            android:id="@+id/kisi_yer_tutucu_bir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="1dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kisi_cep_sms_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

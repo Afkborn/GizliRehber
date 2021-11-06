@@ -26,4 +26,8 @@
     <string name="sil">Sil</string>
     <string name="ara">Ara</string>
     <string name="phone_number">Phone Number</string>
+    <string name="sms">SMS</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="cep">Cep</string>
+    <string name="install_Whatsapp_first">Please install whatsapp first!</string>
 </resources>

@@ -12,7 +12,7 @@ import com.bilgehankalay.gizlirehber.Model.LogModel
 
 @Database(
     entities = [KisiModel::class,LogModel::class],
-    version = 9
+    version = 10
 )
 abstract class KisilerDatabase : RoomDatabase() {
     abstract  fun kisiDAO() : KisiDAO

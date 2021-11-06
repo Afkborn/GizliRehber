@@ -8,6 +8,7 @@ import java.util.*
 
 @Entity(tableName = "logs")
 data class LogModel(
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id : Int = 0,
@@ -17,7 +18,7 @@ data class LogModel(
     val durum : String,
 
     @ColumnInfo(name="zaman")
-    val zaman : Int,
+    val zaman : String,
 
 
     @ColumnInfo(name="tarihOlusturulma")
@@ -30,4 +31,6 @@ data class LogModel(
 
 
 
-) : Serializable
+) : Serializable{
+
+}

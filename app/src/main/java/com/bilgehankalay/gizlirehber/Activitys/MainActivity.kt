@@ -2,8 +2,10 @@ package com.bilgehankalay.gizlirehber.Activitys
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -31,6 +33,9 @@ class MainActivity : BaseActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavigationView,navHostFragment.navController)
 
 
+
+
+
         listenUiEvents()
 
 
@@ -38,6 +43,10 @@ class MainActivity : BaseActivity() {
         capabilitiesRequestor.activityReference = WeakReference(this)
         manifestPermissionRequestor.getPermissions()
     }
+
+
+
+
     override fun onResume() {
         super.onResume()
         if (checkCapabilitiesOnResume) {
