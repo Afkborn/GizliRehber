@@ -55,6 +55,12 @@ class KisiEkleFragment : Fragment() {
 
                 val kisiTelCCPInput = kisiEkleTelNoCcp.selectedCountryCode
                 val kisiTelCCPCountry = kisiEkleTelNoCcp.selectedCountryNameCode
+
+                //selectedCountryNameCode
+
+
+
+
                 val kisiTelNoInput =  kisiEkleTelNoText.text.toString()
 
 

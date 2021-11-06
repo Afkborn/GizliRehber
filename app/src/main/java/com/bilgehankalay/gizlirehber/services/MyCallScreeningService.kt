@@ -6,6 +6,7 @@ import android.telecom.CallScreeningService
 import android.util.Log
 import com.bilgehankalay.gizlirehber.Databases.KisilerDatabase
 import com.bilgehankalay.gizlirehber.Model.KisiModel
+import com.bilgehankalay.gizlirehber.Model.LogModel
 import com.bilgehankalay.gizlirehber.R
 import com.bilgehankalay.gizlirehber.commons.extensions.parseCountryCode
 import com.bilgehankalay.gizlirehber.commons.extensions.removeTelPrefix
@@ -20,11 +21,10 @@ class MyCallScreeningService : CallScreeningService() {
 
     override fun onScreenCall(callDetails: Call.Details) {
         val phoneNumber = getPhoneNumber(callDetails)
-        // +905061529740
-        // 05061529740
-        // 5061529740
+
         var response = CallResponse.Builder()
         val arayanKisi = findCaller(phoneNumber)
+
 
 
         var callDirection = 0
@@ -90,18 +90,18 @@ class MyCallScreeningService : CallScreeningService() {
     }
 
     private fun findCaller(phoneNumber: String) : KisiModel? {
-        Log.e("LOG","gelen no: "+phoneNumber)
         kisilerDb = KisilerDatabase.getirKisilerDatabase(applicationContext)!!
         var kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(phoneNumber)
         if (kisi==null){
             kisi = kisilerDb.kisiDAO().fullTelefonNoIleKisiGetir(phoneNumber)
             if (kisi == null){
-                var deleteZero = phoneNumber
+                val deleteZero = phoneNumber
                 kisi = kisilerDb.kisiDAO().telefonNoIleKisiGetir(deleteZero.drop(1))
             }
         }
         return kisi
     }
+
 }
 
 

@@ -5,12 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.bilgehankalay.gizlirehber.DAO.KisiDAO
+import com.bilgehankalay.gizlirehber.DAO.LogDAO
 import com.bilgehankalay.gizlirehber.Model.KisiModel
+import com.bilgehankalay.gizlirehber.Model.LogModel
 
 
-@Database(entities = [KisiModel::class],version = 7)
+@Database(
+    entities = [KisiModel::class,LogModel::class],
+    version = 9
+)
 abstract class KisilerDatabase : RoomDatabase() {
     abstract  fun kisiDAO() : KisiDAO
+    abstract fun logDAO() : LogDAO
 
     companion object{
         private var INSTANCE : KisilerDatabase? = null

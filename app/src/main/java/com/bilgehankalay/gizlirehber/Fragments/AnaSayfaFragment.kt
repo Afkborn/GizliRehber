@@ -18,6 +18,9 @@ import android.content.Intent
 import android.net.Uri
 import android.app.AlertDialog;
 import android.content.DialogInterface
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 
 class AnaSayfaFragment : Fragment() {
@@ -45,6 +48,25 @@ class AnaSayfaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tumKisileriGetir()
 
+        val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val silinecekKisiModel = kisilerList[viewHolder.adapterPosition]
+                if (silinecekKisiModel != null){
+                    kisiSilClick(silinecekKisiModel)
+                }
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallBack)
+        itemTouchHelper.attachToRecyclerView(binding.rehberRecyclerView)
+
+
         binding.apply {
             kisiEkleFab.setOnClickListener {
                 findNavController().navigate(R.id.anasayfa_to_kisiekle)
@@ -62,7 +84,7 @@ class AnaSayfaFragment : Fragment() {
             else{
                 val kisilerAdapter = RehberRecyclerAdapter(kisiList = kisilerList)
 
-                kisilerAdapter.onDeleteClick = ::kisiSilClick
+                //kisilerAdapter.onDeleteClick = ::kisiSilClick
                 kisilerAdapter.onItemClick = ::secilenKisiOnClick
                 kisilerAdapter.onCallClick = ::kisiAraClick
 
@@ -78,12 +100,16 @@ class AnaSayfaFragment : Fragment() {
         val uyariMesaji = AlertDialog.Builder(requireContext())
         uyariMesaji.setMessage("${gelenKisi.ad} ${gelenKisi.soyad}'ı silmek istediğinden emin misin?")
         uyariMesaji.setPositiveButton("Evet", DialogInterface.OnClickListener { _, _ ->
+
             kisilerDb.kisiDAO().kisiSil(gelenKisi)
             kisilerList = kisilerDb.kisiDAO().tumKisiler()
             tumKisileriGetir()
+
+            Snackbar.make(requireView(),"${gelenKisi.ad} ${gelenKisi.soyad} başarılı bir şekilde silindi.",1000).show()
         })
         uyariMesaji.setNegativeButton("Hayır",null)
         uyariMesaji.show()
+
     }
 
     fun secilenKisiOnClick(gelenKisi : KisiModel){
@@ -96,6 +122,12 @@ class AnaSayfaFragment : Fragment() {
         startActivity(intent)
 
     }
+
+
+
+
+
+
 
 
 
