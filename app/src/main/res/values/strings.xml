@@ -35,4 +35,9 @@
     <string name="ayarlar">Ayarlar</string>
     <string name="varsayilan_tema">Varsayılan Tema</string>
     <string name="ozel_tema">Özel Tema</string>
+
+    <string name="notification_name">Deneme</string>
+    <string name="notification_description">deneme2</string>
+    <string name="channel_name">channel name</string>
+    <string name="channel_description">channel desc</string>
 </resources>

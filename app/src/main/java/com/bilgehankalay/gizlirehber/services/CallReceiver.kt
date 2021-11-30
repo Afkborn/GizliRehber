@@ -19,7 +19,6 @@ class CallReceiver : BroadcastReceiver() {
             }
             else if (p1.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_RINGING)){
                 //TODO CALL RINGING
-
             }
         }
     }

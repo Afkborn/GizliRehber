@@ -7,6 +7,7 @@ import java.io.Serializable
 
 @Entity(tableName = "kisiler")
 data class KisiModel(
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
     var id : Int = 0,
